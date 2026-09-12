@@ -128,6 +128,51 @@ permalink: /
     margin-left: 0.3rem;
     vertical-align: middle;
   }
+
+  /* ── About / summary ── */
+  .about-body {
+    width: 100% !important;
+    max-width: none !important;
+  }
+  .about-body > p,
+  .about-body > ul {
+    width: 100% !important;
+    max-width: none !important;
+    box-sizing: border-box;
+  }
+  .about-body p {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--ink);
+    margin: 0 0 0.9rem 0;
+  }
+  .about-body .summary-list {
+  font-family: inherit;      /* Inherit base font */
+  font-size: 0.95rem;        /* Same size as standard <p> */
+  color: var(--ink);         /* Same color as standard <p> */
+  line-height: 1.65;         /* Same line height as standard <p> */
+  margin: 0 0 0.9rem 0;
+  padding-left: 1.2rem;
+  list-style-type: disc;
+  }
+  .about-body .summary-list li {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    margin-bottom: 0.5rem;
+    padding-left: 0.2rem;
+  }
+  .about-body .summary-list li:last-child {
+    margin-bottom: 0;
+  }
+  .about-body .disclaimer {
+    font-size: 0.8rem;
+    line-height: 1.55;
+    color: var(--muted);
+    opacity: 0.9;
+    margin-top: 1.1rem;
+    margin-bottom: 0;
+  }
 </style>
 
 <div class="page">
@@ -143,7 +188,7 @@ permalink: /
 
   <div class="about-body">
     <p>Building assurable, effective, reliable, and resilient autonomous systems in safety-critical and highly-regulated industries, particularly within the defence and aerospace domains. With 6 years' experience in the defence and aerospace industries and as a current AI Engineer at Airbus, I have worked, and am working towards this by helping:</p>
-    <ul style="font-size: 0.9rem; color: var(--muted); margin: 0.75rem 0 0.5rem 1.25rem; line-height: 1.55;">
+    <ul class="summary-list">
       <li>Build unsupervised anomaly detection systems for ground testing of the European Service Module's propulsion system for NASA's Artemis program (the powerhouse of the human-rated Orion spacecraft) [Airbus Defence &amp; Space].</li>
       <li>Automate and parallelise satellite software scripts for Airbus' OneSat geostationary communications satellite [Airbus Defence &amp; Space].</li>
       <li>Build an AI-augmented wing assembly assistant for the A350 (the world's most advanced long-haul aircraft) [Airbus Commercial].</li>
@@ -422,7 +467,7 @@ permalink: /
         </div>
         <div class="exp-role-row">
           <span class="exp-role">Astrophysics: An Introduction (short course)</span>
-          <p class="exp-desc">The 2023 'Astrophysics: An Introduction' course at the Adelaide Planetarium taught foundational space science concepts through a non-mathematical, highly visual curriculum. Participants explored celestial mechanics, stellar evolution from birth to the creation of black holes, and the structural dynamics of galaxies. The course paired theoretical topics, like Einstein's relativity and cosmological expansion, with practical sky-mapping techniques utilizing the planetarium's immersive 8-metre dome.</p>
+          <p class="exp-desc">The 2023 'Astrophysics: An Introduction' course at the Adelaide Planetarium taught foundational space science concepts through a non-mathematical, highly visual curriculum. Participants explored celestial mechanics, stellar evolution from birth to the creation of black holes, and the structural dynamics of galaxies. The course paired theoretical topics, like Einstein's relativity and cosmological expansion, with practical sky-mapping techniques utilising the planetarium's immersive 8-metre dome.</p>
         </div>
       </div>
     </details>
