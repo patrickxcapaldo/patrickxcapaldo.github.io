@@ -175,6 +175,41 @@
     margin-left: 0.3rem;
     vertical-align: middle;
   }
+
+  /* ── About / summary ── */
+  .about-body {
+    max-width: 100%;
+  }
+  .about-body p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--ink);
+    margin: 0 0 0.85rem 0;
+  }
+  .about-body .summary-list {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--ink);
+    opacity: 0.9;
+    margin: 0.6rem 0 1rem 0;
+    padding-left: 1.15rem;
+    list-style-type: disc;
+  }
+  .about-body .summary-list li {
+    margin-bottom: 0.45rem;
+    padding-left: 0.15rem;
+  }
+  .about-body .summary-list li:last-child {
+    margin-bottom: 0;
+  }
+  .about-body .disclaimer {
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--muted);
+    opacity: 0.85;
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
 </style>
 
 <div class="page">
@@ -190,7 +225,7 @@
 
   <div class="about-body">
     <p>Building assurable, effective, reliable, and resilient autonomous systems in safety-critical and highly-regulated industries, particularly within the defence and aerospace domains. With 6 years' experience in the defence and aerospace industries and as a current AI Engineer at Airbus, I have worked, and am working towards this by helping:</p>
-    <ul style="font-size: 0.9rem; color: var(--muted); margin: 0.75rem 0 0.5rem 1.25rem; line-height: 1.55;">
+    <ul class="summary-list">
       <li>Build unsupervised anomaly detection systems for ground testing of the European Service Module's propulsion system for NASA's Artemis program (the powerhouse of the human-rated Orion spacecraft) [Airbus Defence &amp; Space].</li>
       <li>Automate and parallelise satellite software scripts for Airbus' OneSat geostationary communications satellite [Airbus Defence &amp; Space].</li>
       <li>Build an AI-augmented wing assembly assistant for the A350 (the world's most advanced long-haul aircraft) [Airbus Commercial].</li>
