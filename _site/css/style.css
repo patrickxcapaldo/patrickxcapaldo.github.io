@@ -4,33 +4,32 @@
 
 /* ── TOKENS ── */
 :root {
-  --bg:      #F7F6F2;
-  --surface: #EEECEA;
-  --ink:     #1A1916;
-  --muted:   #6B6860;
-  --accent:  #2A4B7C;
-  --rule:    #D4D2CC;
+  --palette-ink:    #121316;
+  --palette-black:  #000000;
+  --palette-slate:  #475569;
+  --palette-mist:   #94A3B8;
+  --palette-orchid: #B97FED;
+  --bg:      #FFFFFF;
+  --surface: #FFFFFF;
+  --ink:     var(--palette-ink);
+  --muted:   var(--palette-slate);
+  --accent:  var(--palette-orchid);
+  --rule:    color-mix(in srgb, var(--palette-slate) 24%, transparent);
   --serif:   'EB Garamond', Georgia, serif;
   --sans:    'Inter', system-ui, sans-serif;
   --max:     720px;
   --pad:     clamp(1.5rem, 5vw, 3rem);
   color-scheme: light;
   
-  /* NEW: A richer, cleaner amethyst plum with enough contrast for light mode */
-  --brand-purple: #63439C; 
 }
 
 [data-theme="dark"] {
-  --bg:      #141412;
-  --surface: #1E1D1A;
-  --ink:     #E8E6E0;
-  --muted:   #888580;
-  --accent:  #7BAFD4;
-  --rule:    #2E2D29;
+  --bg:      var(--palette-black);
+  --surface: var(--palette-ink);
+  --ink:     var(--palette-mist);
+  --muted:   var(--palette-mist);
+  --rule:    color-mix(in srgb, var(--palette-slate) 48%, transparent);
   color-scheme: dark;
-  
-  /* Retains the soft, luminous lavender-plum for dark mode surfaces */
-  --brand-purple: #A594D1; 
 }
 
 /* ── BASE ── */
@@ -68,7 +67,7 @@ nav {
   font-size: 1.05rem;
   font-weight: 500; /* Bumped slightly to give the colored serif text some presence */
   letter-spacing: 0.01em;
-  color: var(--brand-purple); /* Swapped from var(--ink) */
+  color: var(--accent);
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -136,7 +135,7 @@ main { padding-top: 52px; }
 .section-header {
   margin-bottom: 3rem;
   padding-bottom: 1.5rem;
-  border-bottom: 2px solid var(--brand-purple); 
+  border-bottom: 2px solid var(--accent);
   
   /* FORCE CLEARANCE: Ensures the container container stays open identically */
   display: flex;
@@ -180,9 +179,7 @@ main { padding-top: 52px; }
   transition: background 0.15s ease;
 }
 
-.list-item:hover {
-  background: color-mix(in srgb, var(--brand-purple) 8%, transparent);
-}
+.list-item:hover { background: color-mix(in srgb, var(--accent) 8%, transparent); }
 
 .list-item:last-child { border-bottom: none; }
 
@@ -196,7 +193,7 @@ main { padding-top: 52px; }
   width: 100%;
 }
 
-.list-item a:hover .item-title { color: var(--brand-purple); }
+.list-item a:hover .item-title { color: var(--accent); }
 
 /* Bounding thumbnail constraint box */
 .thumb-wrapper {
@@ -311,14 +308,10 @@ main { padding-top: 52px; }
   width: max-content;
 }
 
-.status-active   { background: #E8F5E8; color: #2D6A2D; }
-.status-ongoing  { background: #E8F0F8; color: #2A4B7C; }
-.status-paused   { background: #FFF3CD; color: #856404; }
+.status-active   { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); }
+.status-ongoing  { background: color-mix(in srgb, var(--muted) 12%, transparent); color: var(--muted); }
+.status-paused   { background: var(--surface); color: var(--muted); }
 .status-archive  { background: var(--surface); color: var(--muted); }
-
-[data-theme="dark"] .status-active  { background: #16291A; color: #6FBF6F; }
-[data-theme="dark"] .status-ongoing { background: #1A2F4A; color: #7BAFD4; }
-[data-theme="dark"] .status-paused  { background: #2D2510; color: #E6C15C; }
 
 /* ── TAG FILTER ── */
 .tag-filter {
@@ -495,12 +488,10 @@ main { padding-top: 52px; }
   transition: background 0.15s ease, opacity 0.15s;
 }
 
-.contact-link:hover {
-  background: color-mix(in srgb, var(--brand-purple) 8%, transparent);
-}
+.contact-link:hover { background: color-mix(in srgb, var(--accent) 8%, transparent); }
 
 .contact-link:hover .contact-link-label {
-  color: var(--brand-purple);
+  color: var(--accent);
 }
 
 .contact-link-label {
