@@ -1,88 +1,135 @@
-# Patrick Capaldo — Personal Portfolio
+# Patrick X. Capaldo — Personal Website & Portfolio
 
-My minimalist personal website and portfolio tracker built with **Eleventy (11ty)**, featuring standard layout engines, dark mode toggle support, a subtle custom purple design flavor, and a clean typography grid.
+My minimalist personal website, portfolio tracker, and engineering notebook built with **Eleventy (11ty)**. Designed to match the technical, high-contrast aesthetic and design standards of [Silicon Carbide Imperative](https://scimperative.com/).
+
+Hosted on **GitHub Pages** at [patrickxcapaldo.github.io](https://patrickxcapaldo.github.io/) with automated **GitHub Actions CI/CD**.
 
 ---
 
-## 🏗️ Repository Architecture
+## 🏗️ Architecture & Structure
 
-This codebase is split into two halves: the **source files** (tracked on the `master` branch) and the **production assets** (compiled and deployed from the `gh-pages` branch).
+A standalone, zero-dependency static site. All source files live on `main`. Deploys are fully automated via GitHub Actions—there are no build artifacts or `gh-pages` branches to manage.
 
 ```text
-patrickcapaldo.github.io/
-├── .git/                 # Git tracking engine
-├── src/                  # YOUR MAIN WORKING DIRECTORY
-│   ├── _includes/        # Structural layout wrappers (.njk templates)
-│   ├── assets/           # Global styles, fonts, images, and media
-│   ├── contact.njk       # Contact page template
-│   ├── index.njk         # About/Home page template
-│   ├── projects.njk      # Projects tracker layout engine
-│   └── thoughts/         # Markdown (.md) blog posts directory
-├── _site/                # Auto-generated build outputs (NEVER edit directly)
-├── eleventy.config.js    # Eleventy asset pipeline routing rules
-├── package.json          # Node dependencies and project configuration
-└── README.md             # This operations manual
-
+patrickxcapaldo.github.io/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml        # Automated CI/CD GitHub Pages deployment pipeline
+├── src/                      # Source content & layouts
+│   ├── _includes/layouts/    # Base, post, and project page layout templates (.njk)
+│   ├── assets/               # Static images and media (passed through to _site)
+│   ├── css/style.css         # Complete Scimperative-aligned design system & responsive rules
+│   ├── js/                   # Vanilla theme switcher & tag filter logic
+│   ├── index.njk             # About & Experience timeline (/)
+│   ├── thoughts.njk          # Thoughts & essay list with tag filtering (/thoughts/)
+│   ├── thoughts/             # Markdown articles (.md)
+│   ├── projects.njk          # Grouped projects listing (/projects/)
+│   ├── projects/other/       # Markdown project pages (.md)
+│   └── contact.njk           # Contact directory (/contact/)
+├── eleventy.config.js        # 11ty asset passthroughs, collections, & custom filters
+├── package.json              # Build scripts and dev dependencies
+└── README.md                 # This manual
 ```
 
 ---
 
-## 🛠️ Local Development Pipeline
+## 🛠️ Local Development
 
-To run the local development server to test changes, add blog posts, or preview code tweaks before pushing them live:
-
-1. **Open your WSL Workspace terminal:**
+### 1. Install Dependencies
 ```bash
-cd ~/projects/patrickcapaldo.github.io
-
+npm install
 ```
 
-
-2. **Boot up the hot-reloading development environment:**
+### 2. Start the Local Development Server
 ```bash
-npm start
-
+npm run dev
 ```
+*(Runs `npx @11ty/eleventy --serve`)*
 
+Open [http://localhost:8080](http://localhost:8080) in your browser. The page hot-reloads automatically whenever you save edits to markdown or styling.
 
-*(Alternatively, you can run `npx @11ty/eleventy --serve`)*
-3. **Open your browser:** Go to `http://localhost:8080` to view and interact with your site live as you save your source files.
+### 3. Build for Production Locally (Optional Test)
+```bash
+npm run build
+```
+Compiles everything into the `_site/` directory.
 
 ---
 
-## 🚀 Deployment Playbook (How to Push Live)
+## 🚀 How to Publish Changes (Automated CI/CD)
 
-Because GitHub Pages serves your compiled static files directly out of the `gh-pages` branch, editing `master` alone will not update the live site.
+Deployments are 100% automated. You never need to build manually before pushing or mess with a `gh-pages` branch.
 
-Whenever you finish making modifications or writing content, run this clean two-step production compile sequence to launch the updates live to `https://patrickcapaldo.github.io/`:
-
-```bash
-# Step 1: Compile the raw layout code into optimized production assets
-npx @11ty/eleventy
-
-# Step 2: Push the newly built '_site' production folder directly into the live deployment pipeline
-npx gh-pages -d _site
-
-```
-
-### 💾 Optional: Keeping your Source Files Backed Up
-
-To ensure your source files (`src/`, `eleventy.config.js`, etc.) stay safely backed up inside your GitHub cloud history, run a standard git commit push on your main development tracking branch:
+Whenever you add an article, update project details, or adjust styling:
 
 ```bash
+# 1. Stage your changes
 git add .
-git commit -m "content: add new post and refine styles"
-git push origin master
 
+# 2. Commit
+git commit -m "Add new post on orbital mechanics"
+
+# 3. Push to main
+git push origin main
+```
+
+### What Happens Automatically:
+1. GitHub receives the push on `main`.
+2. The [Deploy to GitHub Pages](.github/workflows/deploy.yml) workflow triggers.
+3. Node 20 installs dependencies and runs `npm run build`.
+4. The generated site is published directly to [https://patrickxcapaldo.github.io/](https://patrickxcapaldo.github.io/).
+
+---
+
+## ✍️ Writing & Adding Content
+
+### Adding a Thought / Article
+Create a new file in `src/thoughts/YYYY-MM-DD-slug.md`:
+
+```markdown
+---
+layout: layouts/post.njk
+title: "Your Post Title"
+date: 2026-11-05
+tags:
+  - tutorial   # or book, blog, puzzle, essay
+excerpt: "One-sentence summary for list previews."
+thumbnail: /assets/img/tutorials/example.png # Optional preview image
+---
+
+Your content in Markdown here...
+```
+
+### Adding a Project
+Create a new file in `src/projects/other/project_slug.md`:
+
+```markdown
+---
+layout: layouts/project.njk
+title: "Project Name"
+date: 2026-01-01
+tags: [python, ai]
+status: Active   # Active | Paused | Archive
+excerpt: "Project description."
+thumbnail: /assets/img/projects/example.png
+---
+
+Project overview and technical details here...
 ```
 
 ---
 
-## 🎨 Key Design Tokens & Settings
+## 🎨 Design System & Tokens
 
-* **Framework:** Eleventy v3.x
-* **Core Fonts:** Serif: *EB Garamond* | Sans-serif: *Inter*
-* **Theme System:** Native data-theme switching hooks (`[data-theme="dark"]`)
-* **Signature Accent Variable:** `--brand-purple` coordinates the custom theme layout lines across light and dark formats automatically.
-
-```
+* **Engine:** Eleventy v3 (Nunjucks + Markdown)
+* **Design Philosophy:** North Star Standard (Flat fills, 1px hairlines, zero decorative motion, mobile-first responsive).
+* **Typography:**
+  * Primary: `Inter, system-ui, sans-serif`
+  * Monospace / Data: `JetBrains Mono, ui-monospace, monospace`
+* **Color Palette:**
+  * **Ink:** `#0f1117`
+  * **Black:** `#000000` (deepest dark baseline)
+  * **Slate:** `#475569`
+  * **Mist:** `#94A3B8`
+  * **Orchid (Single Accent):** `#B97FED` (`--brand-orchid`)
+* **Theme Switching:** Dark mode baseline with light mode toggle support; preferences persist in `localStorage` (`pc-theme`) with zero flash of unstyled theme on page load.
