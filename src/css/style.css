@@ -37,7 +37,7 @@
   --accent: var(--brand-orchid);
   --accent-soft: rgba(185, 127, 237, 0.12);
   --accent-line: rgba(185, 127, 237, 0.45);
-  --hover-fill: rgba(0, 0, 0, 0.04);
+  --hover-fill: rgba(185, 127, 237, 0.07);
 
   /* Layout */
   --max: 760px;
@@ -62,7 +62,7 @@
   --subtle: var(--brand-slate);
 
   /* Accent & Hover tokens */
-  --hover-fill: rgba(255, 255, 255, 0.05);
+  --hover-fill: rgba(185, 127, 237, 0.08);
 
   color-scheme: dark;
 }
@@ -118,7 +118,7 @@ nav {
   font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: -0.02em;
-  color: var(--ink);
+  color: var(--accent);
   text-decoration: none;
 }
 
@@ -151,7 +151,7 @@ nav {
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: var(--ink);
+  color: var(--accent);
   text-decoration: none;
 }
 
@@ -204,7 +204,7 @@ main {
 .section-header {
   margin-bottom: 2.5rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 2px solid var(--accent-line);
   display: flex;
   flex-direction: column;
 }
@@ -435,7 +435,7 @@ main {
 }
 
 .tag-checkbox:hover {
-  border-color: var(--muted);
+  border-color: var(--accent-line);
   color: var(--ink);
 }
 
@@ -444,6 +444,11 @@ main {
   width: 12px;
   height: 12px;
   margin: 0;
+}
+
+.tag-checkbox:has(input:checked) {
+  border-color: var(--accent-line);
+  background: var(--accent-soft);
 }
 
 .tag-checkbox input:checked ~ span {
@@ -521,7 +526,7 @@ main {
 .post-header {
   margin-bottom: 2.5rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 2px solid var(--accent-line);
 }
 
 .post-back {
